@@ -1,0 +1,58 @@
+.markdown-body.theme-solarized {
+  color: #586e75;
+  background: #fdf6e3;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.markdown-body.theme-solarized h1,
+.markdown-body.theme-solarized h2,
+.markdown-body.theme-solarized h3,
+.markdown-body.theme-solarized h4 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #073642;
+}
+.markdown-body.theme-solarized h1 { font-size: 2em; padding-bottom: 0.3em; border-bottom: 1px solid #eee8d5; }
+.markdown-body.theme-solarized h2 { font-size: 1.5em; padding-bottom: 0.3em; border-bottom: 1px solid #eee8d5; }
+.markdown-body.theme-solarized h3 { font-size: 1.25em; }
+.markdown-body.theme-solarized p { margin-top: 0; margin-bottom: 16px; }
+.markdown-body.theme-solarized a { color: #268bd2; text-decoration: none; }
+.markdown-body.theme-solarized a:hover { text-decoration: underline; }
+.markdown-body.theme-solarized code {
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+  background: #eee8d5;
+  border-radius: 4px;
+  color: #d33682;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+}
+.markdown-body.theme-solarized pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background: #eee8d5;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+.markdown-body.theme-solarized pre code { padding: 0; background: transparent; color: inherit; font-size: 100%; }
+.markdown-body.theme-solarized blockquote {
+  margin: 0 0 16px;
+  padding: 0 1em;
+  color: #93a1a1;
+  border-left: 0.25em solid #eee8d5;
+}
+.markdown-body.theme-solarized ul, .markdown-body.theme-solarized ol { margin-bottom: 16px; padding-left: 2em; }
+.markdown-body.theme-solarized li + li { margin-top: 0.25em; }
+.markdown-body.theme-solarized img { max-width: 100%; }
+.markdown-body.theme-solarized hr {
+  height: 0.25em; padding: 0; margin: 24px 0;
+  background: #eee8d5; border: 0; border-radius: 2px;
+}
+.markdown-body.theme-solarized table { border-spacing: 0; border-collapse: collapse; margin-bottom: 16px; width: 100%; }
+.markdown-body.theme-solarized th, .markdown-body.theme-solarized td { padding: 6px 13px; border: 1px solid #eee8d5; }
+.markdown-body.theme-solarized th { font-weight: 600; background: #eee8d5; }
+.markdown-body.theme-solarized tr:nth-child(2n) { background: #eee8d5; }

@@ -40,6 +40,7 @@ docs/
 ├── plan.md                  # 项目规划
 ├── design.md                # 技术设计（含 Tauri 架构）
 ├── tasks.md                 # 任务看板
+├── apple-distribution.md    # Apple 发布指南（跨项目复用）
 ├── decisions/
 │   └── 000-template.md      # ADR 模板
 └── changelog.md             # 变更日志
