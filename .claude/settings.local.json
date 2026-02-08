@@ -18,7 +18,16 @@
       "Bash(timeout 10 pnpm dev:*)",
       "Bash(npx vue-tsc:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(pnpm run build:*)",
+      "Bash(sort -t: -k2 -n __NEW_LINE_82e7a4080a15f61e__ echo echo '=== 已建立的外部连接（前30条）===' lsof -i -P -n)",
+      "Bash(lsof:*)",
+      "Bash(sort:*)",
+      "Bash(networksetup -getwebproxy:*)",
+      "Bash(networksetup -getsecurewebproxy:*)",
+      "Bash(networksetup:*)",
+      "Bash(scutil:*)",
+      "Bash(xargs kill:*)"
     ]
   }
 }

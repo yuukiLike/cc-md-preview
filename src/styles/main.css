@@ -2,8 +2,14 @@
 
 @import "./themes/github.css";
 @import "./themes/github-dark.css";
-@import "./themes/minimal.css";
 @import "./themes/solarized.css";
+@import "./themes/dracula.css";
+@import "./themes/nord.css";
+@import "./themes/cobalt.css";
+@import "./themes/monokai.css";
+@import "./themes/terminal.css";
+@import "./themes/sunset.css";
+@import "./themes/arctic.css";
 
 @import "highlight.js/styles/github.css";
 

@@ -24,3 +24,8 @@ export interface CleanResult {
   freedBytes: number;
   errors: string[];
 }
+
+export interface BrowserInfo {
+  name: string;
+  installed: boolean;
+}

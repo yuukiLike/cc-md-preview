@@ -38,9 +38,26 @@ pub struct CleanResult {
     pub errors: Vec<String>,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct BrowserInfo {
+    pub name: String,
+    pub installed: bool,
+}
+
 #[tauri::command]
-pub async fn get_cache_info() -> Result<CacheInfo, String> {
-    let categories_config = cache_paths::get_cache_categories("Default");
+pub async fn detect_browsers() -> Result<Vec<BrowserInfo>, String> {
+    let browsers = cache_paths::detect_installed_browsers();
+    Ok(browsers
+        .into_iter()
+        .map(|(name, installed)| BrowserInfo { name, installed })
+        .collect())
+}
+
+#[tauri::command]
+pub async fn get_cache_info(browser: Option<String>) -> Result<CacheInfo, String> {
+    let browser = browser.as_deref().unwrap_or("Chrome");
+    let categories_config = cache_paths::get_cache_categories_for_browser(browser, "Default");
     let mut categories = Vec::new();
     let mut total_size: u64 = 0;
     let mut total_files: u64 = 0;
@@ -72,8 +89,12 @@ pub async fn get_cache_info() -> Result<CacheInfo, String> {
 }
 
 #[tauri::command]
-pub async fn list_cache_entries(cache_type: String) -> Result<Vec<CacheEntry>, String> {
-    let categories = cache_paths::get_cache_categories("Default");
+pub async fn list_cache_entries(
+    cache_type: String,
+    browser: Option<String>,
+) -> Result<Vec<CacheEntry>, String> {
+    let browser = browser.as_deref().unwrap_or("Chrome");
+    let categories = cache_paths::get_cache_categories_for_browser(browser, "Default");
     let path = categories
         .iter()
         .find(|(name, _)| name == &cache_type)
@@ -113,8 +134,12 @@ pub async fn list_cache_entries(cache_type: String) -> Result<Vec<CacheEntry>, S
 }
 
 #[tauri::command]
-pub async fn clean_cache(cache_types: Vec<String>) -> Result<CleanResult, String> {
-    let categories = cache_paths::get_cache_categories("Default");
+pub async fn clean_cache(
+    cache_types: Vec<String>,
+    browser: Option<String>,
+) -> Result<CleanResult, String> {
+    let browser = browser.as_deref().unwrap_or("Chrome");
+    let categories = cache_paths::get_cache_categories_for_browser(browser, "Default");
     let mut deleted_files: u64 = 0;
     let mut freed_bytes: u64 = 0;
     let mut errors = Vec::new();
@@ -172,8 +197,9 @@ pub async fn clean_cache(cache_types: Vec<String>) -> Result<CleanResult, String
 }
 
 #[tauri::command]
-pub async fn get_chrome_profiles() -> Result<Vec<String>, String> {
-    let base = cache_paths::get_chrome_base_dir();
+pub async fn get_chrome_profiles(browser: Option<String>) -> Result<Vec<String>, String> {
+    let browser = browser.as_deref().unwrap_or("Chrome");
+    let base = cache_paths::get_browser_base_dir(browser);
     let mut profiles = Vec::new();
 
     if base.exists() {

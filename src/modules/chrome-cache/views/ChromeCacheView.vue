@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, computed } from "vue";
 import { invoke } from "@tauri-apps/api/core";
 import { useChromeCacheStore } from "@/stores/chrome-cache";
-import type { CacheInfo, CacheEntry, CleanResult } from "../types";
+import type { CacheInfo, CacheEntry, CleanResult, BrowserInfo } from "../types";
 import CacheSummaryCard from "../components/CacheSummaryCard.vue";
 import CacheBreakdown from "../components/CacheBreakdown.vue";
 import CacheEntryList from "../components/CacheEntryList.vue";
@@ -10,10 +10,34 @@ import CleanupButton from "../components/CleanupButton.vue";
 
 const store = useChromeCacheStore();
 
+const installedBrowsers = computed(() =>
+  store.browsers.filter((b) => b.installed),
+);
+
+const showBrowserTabs = computed(() => installedBrowsers.value.length > 1);
+
+async function detectBrowsers() {
+  try {
+    const list = await invoke<BrowserInfo[]>("detect_browsers");
+    store.setBrowsers(list);
+  } catch (e) {
+    console.error("Failed to detect browsers:", e);
+    store.setBrowsers([{ name: "Chrome", installed: true }]);
+  }
+}
+
+async function switchBrowser(name: string) {
+  if (name === store.activeBrowser) return;
+  store.setActiveBrowser(name);
+  await scan();
+}
+
 async function scan() {
   store.isScanning = true;
   try {
-    const info = await invoke<CacheInfo>("get_cache_info");
+    const info = await invoke<CacheInfo>("get_cache_info", {
+      browser: store.activeBrowser,
+    });
     store.setCacheInfo(info);
   } catch (e) {
     console.error("Failed to scan cache:", e);
@@ -27,6 +51,7 @@ async function loadEntries(categoryName: string) {
   try {
     const list = await invoke<CacheEntry[]>("list_cache_entries", {
       cacheType: categoryName,
+      browser: store.activeBrowser,
     });
     store.setEntries(list);
   } catch (e) {
@@ -40,6 +65,7 @@ async function cleanCache(types: string[]) {
   try {
     const result = await invoke<CleanResult>("clean_cache", {
       cacheTypes: types,
+      browser: store.activeBrowser,
     });
     console.log(
       `Cleaned: ${result.deletedFiles} files, freed ${result.freedBytes} bytes`,
@@ -55,7 +81,8 @@ async function cleanCache(types: string[]) {
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
+  await detectBrowsers();
   if (!store.cacheInfo) {
     scan();
   }
@@ -72,6 +99,23 @@ onMounted(() => {
         @click="scan"
       >
         {{ store.isScanning ? "Scanning..." : "Refresh" }}
+      </button>
+    </div>
+
+    <!-- Browser tabs -->
+    <div v-if="showBrowserTabs" class="flex gap-1 border-b border-gray-200">
+      <button
+        v-for="b in installedBrowsers"
+        :key="b.name"
+        class="px-4 py-2 text-sm font-medium transition-colors relative"
+        :class="
+          store.activeBrowser === b.name
+            ? 'text-blue-600 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-blue-600'
+            : 'text-gray-500 hover:text-gray-700'
+        "
+        @click="switchBrowser(b.name)"
+      >
+        {{ b.name }}
       </button>
     </div>
 
