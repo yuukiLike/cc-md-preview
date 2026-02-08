@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@import "./themes/github.css";
+@import "./themes/github-dark.css";
+@import "./themes/solarized.css";
+@import "./themes/dracula.css";
+@import "./themes/nord.css";
+@import "./themes/cobalt.css";
+@import "./themes/monokai.css";
+@import "./themes/terminal.css";
+@import "./themes/sunset.css";
+@import "./themes/arctic.css";
+
+@import "highlight.js/styles/github.css";
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  height: 100vh;
+  overflow: hidden;
+}

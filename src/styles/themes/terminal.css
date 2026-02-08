@@ -1,0 +1,64 @@
+.markdown-body.theme-terminal {
+  color: #33ff33;
+  background: #0a0a0a;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+.markdown-body.theme-terminal h1,
+.markdown-body.theme-terminal h2,
+.markdown-body.theme-terminal h3,
+.markdown-body.theme-terminal h4,
+.markdown-body.theme-terminal h5,
+.markdown-body.theme-terminal h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #00ff00;
+}
+.markdown-body.theme-terminal h1 { font-size: 2em; padding-bottom: 0.3em; border-bottom: 1px solid #1a3a1a; }
+.markdown-body.theme-terminal h2 { font-size: 1.5em; padding-bottom: 0.3em; border-bottom: 1px solid #1a3a1a; }
+.markdown-body.theme-terminal h3 { font-size: 1.25em; }
+.markdown-body.theme-terminal h4 { font-size: 1em; }
+.markdown-body.theme-terminal p { margin-top: 0; margin-bottom: 16px; }
+.markdown-body.theme-terminal a { color: #00ff00; text-decoration: underline; }
+.markdown-body.theme-terminal a:hover { color: #66ff66; }
+.markdown-body.theme-terminal code {
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+  background: #1a1a1a;
+  border-radius: 4px;
+  color: #00ff00;
+  border: 1px solid #1a3a1a;
+  font-family: inherit;
+}
+.markdown-body.theme-terminal pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background: #111111;
+  border-radius: 4px;
+  border: 1px solid #1a3a1a;
+  margin-bottom: 16px;
+}
+.markdown-body.theme-terminal pre code { padding: 0; background: transparent; color: inherit; font-size: 100%; border: none; }
+.markdown-body.theme-terminal blockquote {
+  margin: 0 0 16px;
+  padding: 0 1em;
+  color: #228b22;
+  border-left: 0.25em solid #228b22;
+}
+.markdown-body.theme-terminal ul, .markdown-body.theme-terminal ol { margin-top: 0; margin-bottom: 16px; padding-left: 2em; }
+.markdown-body.theme-terminal li + li { margin-top: 0.25em; }
+.markdown-body.theme-terminal img { max-width: 100%; }
+.markdown-body.theme-terminal hr {
+  height: 1px; padding: 0; margin: 24px 0;
+  background: #1a3a1a; border: 0;
+}
+.markdown-body.theme-terminal table { border-spacing: 0; border-collapse: collapse; margin-bottom: 16px; width: 100%; }
+.markdown-body.theme-terminal th, .markdown-body.theme-terminal td { padding: 6px 13px; border: 1px solid #1a3a1a; }
+.markdown-body.theme-terminal th { font-weight: 700; background: #111111; color: #00ff00; }
+.markdown-body.theme-terminal tr:nth-child(2n) { background: #0f0f0f; }

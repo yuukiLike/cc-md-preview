@@ -1,0 +1,62 @@
+.markdown-body.theme-arctic {
+  color: #1c2d3f;
+  background: #f0f6fc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Noto Sans, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+.markdown-body.theme-arctic h1,
+.markdown-body.theme-arctic h2,
+.markdown-body.theme-arctic h3,
+.markdown-body.theme-arctic h4,
+.markdown-body.theme-arctic h5,
+.markdown-body.theme-arctic h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #1a73c7;
+}
+.markdown-body.theme-arctic h1 { font-size: 2em; padding-bottom: 0.3em; border-bottom: 1px solid #c8ddf0; }
+.markdown-body.theme-arctic h2 { font-size: 1.5em; padding-bottom: 0.3em; border-bottom: 1px solid #c8ddf0; }
+.markdown-body.theme-arctic h3 { font-size: 1.25em; }
+.markdown-body.theme-arctic h4 { font-size: 1em; }
+.markdown-body.theme-arctic p { margin-top: 0; margin-bottom: 16px; }
+.markdown-body.theme-arctic a { color: #1a73c7; text-decoration: none; }
+.markdown-body.theme-arctic a:hover { text-decoration: underline; }
+.markdown-body.theme-arctic code {
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+  background: #dce8f5;
+  border-radius: 6px;
+  color: #1a5299;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+.markdown-body.theme-arctic pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background: #dce8f5;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+.markdown-body.theme-arctic pre code { padding: 0; background: transparent; color: inherit; font-size: 100%; }
+.markdown-body.theme-arctic blockquote {
+  margin: 0 0 16px;
+  padding: 0 1em;
+  color: #5a7a99;
+  border-left: 0.25em solid #a8c4e0;
+}
+.markdown-body.theme-arctic ul, .markdown-body.theme-arctic ol { margin-top: 0; margin-bottom: 16px; padding-left: 2em; }
+.markdown-body.theme-arctic li + li { margin-top: 0.25em; }
+.markdown-body.theme-arctic img { max-width: 100%; }
+.markdown-body.theme-arctic hr {
+  height: 0.25em; padding: 0; margin: 24px 0;
+  background: #c8ddf0; border: 0; border-radius: 2px;
+}
+.markdown-body.theme-arctic table { border-spacing: 0; border-collapse: collapse; margin-bottom: 16px; width: 100%; }
+.markdown-body.theme-arctic th, .markdown-body.theme-arctic td { padding: 6px 13px; border: 1px solid #c8ddf0; }
+.markdown-body.theme-arctic th { font-weight: 600; background: #dce8f5; }
+.markdown-body.theme-arctic tr:nth-child(2n) { background: #e6eef7; }
