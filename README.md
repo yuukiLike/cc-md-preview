@@ -26,58 +26,23 @@
 
 ## 从源码构建
 
-### 环境要求
-
-- Node.js 18+
-- Rust 1.77+
-- pnpm
-
-### 步骤
+需要 Node.js 18+、Rust 1.77+、pnpm。
 
 ```bash
-# 安装依赖
 pnpm install
-
-# 开发模式
-pnpm tauri dev
-
-# 构建安装包
-pnpm tauri build
+pnpm tauri dev       # 开发模式
+pnpm tauri build     # 构建安装包
 ```
 
-构建产物在 `src-tauri/target/release/bundle/` 目录下。
+产物在 `src-tauri/target/release/bundle/` 目录下。
+
+### CI 构建
+
+推送到 GitHub 后，通过 Actions → **Build & Release** → Run workflow 触发云端构建，自动生成 macOS (ARM/x64) + Windows 安装包。详见 `.github/workflows/`。
 
 ## 技术栈
 
-| 层 | 技术 |
-|----|------|
-| 框架 | Tauri v2 |
-| 前端 | Vue 3 + TypeScript |
-| 样式 | Tailwind CSS v4 |
-| 渲染 | markdown-it + highlight.js + Mermaid |
-| 后端 | Rust |
-| 构建 | Vite 6 + pnpm |
-
-## 项目结构
-
-```
-src/
-├── modules/
-│   ├── markdown/        # Markdown 预览模块
-│   │   ├── components/  # TabBar, Toolbar, Preview, ThemeGrid...
-│   │   ├── composables/ # useMarkdownRenderer, useFileDrop, useMermaid...
-│   │   ├── constants/   # 主题定义
-│   │   └── views/       # MarkdownView
-│   └── chrome-cache/    # Chrome 缓存管理模块
-├── stores/              # Pinia 状态管理
-└── styles/themes/       # 10 套主题 CSS
-
-src-tauri/
-├── src/
-│   ├── commands/        # Tauri 命令 (文件读取、缓存管理)
-│   └── platform/        # 平台相关逻辑 (缓存路径)
-└── tauri.conf.json
-```
+Tauri v2 · Vue 3 · TypeScript · Tailwind CSS v4 · markdown-it · highlight.js · Mermaid · Rust · Vite 6 · pnpm
 
 ## License
 
