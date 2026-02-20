@@ -30,7 +30,18 @@
       "Bash(xargs kill:*)",
       "Bash(claude mcp list:*)",
       "Bash(pnpm dev:*)",
-      "Bash(git -C /Users/chp/legend/cc-md-preview log -1 --oneline)"
+      "Bash(git -C /Users/chp/legend/cc-md-preview log -1 --oneline)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(git tag:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git pull:*)",
+      "Bash(git diff:*)",
+      "Bash(gh release:*)",
+      "Bash(brew list:*)"
     ]
   }
 }
