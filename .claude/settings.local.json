@@ -27,7 +27,10 @@
       "Bash(networksetup -getsecurewebproxy:*)",
       "Bash(networksetup:*)",
       "Bash(scutil:*)",
-      "Bash(xargs kill:*)"
+      "Bash(xargs kill:*)",
+      "Bash(claude mcp list:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(git -C /Users/chp/legend/cc-md-preview log -1 --oneline)"
     ]
   }
 }
