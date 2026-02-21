@@ -3,6 +3,7 @@ import { useMarkdownStore } from "@/stores/markdown";
 
 const emit = defineEmits<{
   openFile: [];
+  openFolder: [];
 }>();
 
 const store = useMarkdownStore();
@@ -12,12 +13,33 @@ const store = useMarkdownStore();
   <div
     class="relative z-10 flex items-center justify-between px-4 h-12 border-b border-gray-200 bg-white"
   >
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2">
+      <!-- Back to folder -->
+      <button
+        v-if="store.folderPath && store.viewMode === 'preview'"
+        class="flex items-center gap-1 px-2.5 py-1.5 text-sm text-gray-600 rounded-md hover:bg-gray-100 transition-colors"
+        @click="store.setViewMode('folder')"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        <span class="hidden sm:inline">Back to folder</span>
+      </button>
+
       <button
         class="px-3 py-1.5 text-sm bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors"
         @click="emit('openFile')"
       >
-        Open File
+        <span class="hidden sm:inline">Open File</span>
+        <span class="sm:hidden">File</span>
+      </button>
+
+      <button
+        class="px-3 py-1.5 text-sm border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
+        @click="emit('openFolder')"
+      >
+        <span class="hidden sm:inline">Open Folder</span>
+        <span class="sm:hidden">Folder</span>
       </button>
     </div>
     <button

@@ -18,7 +18,17 @@ export interface TabFile {
   content: string;
 }
 
-export type ViewMode = "preview" | "theme-selection";
+export interface MarkdownFileInfo {
+  path: string;
+  relativePath: string;
+  name: string;
+  size: number;
+  modified: string;
+  preview: string;
+  wordCount: number;
+}
+
+export type ViewMode = "preview" | "theme-selection" | "folder";
 
 export const useMarkdownStore = defineStore("markdown", () => {
   const openFiles = ref<TabFile[]>([]);
@@ -26,6 +36,11 @@ export const useMarkdownStore = defineStore("markdown", () => {
   const currentTheme = ref<MarkdownTheme>("github");
   const recentFiles = ref<string[]>([]);
   const viewMode = ref<ViewMode>("preview");
+
+  // Folder state
+  const folderPath = ref<string | null>(null);
+  const folderFiles = ref<MarkdownFileInfo[]>([]);
+  const isScanningFolder = ref(false);
 
   const filePath = computed(() => openFiles.value[activeIndex.value]?.path ?? null);
   const rawContent = computed(() => openFiles.value[activeIndex.value]?.content ?? "");
@@ -94,11 +109,29 @@ export const useMarkdownStore = defineStore("markdown", () => {
   }
 
   function toggleViewMode() {
-    viewMode.value = viewMode.value === "preview" ? "theme-selection" : "preview";
+    if (viewMode.value === "theme-selection") {
+      viewMode.value = folderPath.value ? "folder" : "preview";
+    } else {
+      viewMode.value = "theme-selection";
+    }
   }
 
   function setViewMode(mode: ViewMode) {
     viewMode.value = mode;
+  }
+
+  function setFolderFiles(path: string, files: MarkdownFileInfo[]) {
+    folderPath.value = path;
+    folderFiles.value = files;
+    viewMode.value = "folder";
+  }
+
+  function clearFolder() {
+    folderPath.value = null;
+    folderFiles.value = [];
+    if (viewMode.value === "folder") {
+      viewMode.value = "preview";
+    }
   }
 
   return {
@@ -110,6 +143,9 @@ export const useMarkdownStore = defineStore("markdown", () => {
     recentFiles,
     viewMode,
     fileName,
+    folderPath,
+    folderFiles,
+    isScanningFolder,
     addFile,
     switchTab,
     closeTab,
@@ -120,5 +156,7 @@ export const useMarkdownStore = defineStore("markdown", () => {
     clear,
     toggleViewMode,
     setViewMode,
+    setFolderFiles,
+    clearFolder,
   };
 });

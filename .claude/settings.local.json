@@ -41,7 +41,10 @@
       "Bash(git pull:*)",
       "Bash(git diff:*)",
       "Bash(gh release:*)",
-      "Bash(brew list:*)"
+      "Bash(brew list:*)",
+      "Bash(pnpm install:*)",
+      "Bash(npx vite build:*)",
+      "Bash(ls:*)"
     ]
   }
 }

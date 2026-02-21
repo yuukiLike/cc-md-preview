@@ -13,7 +13,7 @@ defineProps<{
       <div
         class="border-2 border-dashed border-white rounded-2xl px-12 py-8 text-white text-lg font-medium"
       >
-        Drop .md file here
+        Drop files or folders here
       </div>
     </div>
   </Transition>

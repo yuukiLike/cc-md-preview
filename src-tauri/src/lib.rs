@@ -1,5 +1,5 @@
-mod commands;
-mod platform;
+pub mod commands;
+pub mod platform;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -9,6 +9,8 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             commands::markdown::read_markdown_file,
             commands::markdown::open_markdown_dialog,
+            commands::markdown::open_folder_dialog,
+            commands::markdown::list_markdown_files,
             commands::chrome_cache::detect_browsers,
             commands::chrome_cache::get_cache_info,
             commands::chrome_cache::list_cache_entries,

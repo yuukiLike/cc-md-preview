@@ -85,12 +85,15 @@ pnpm tauri dev          # 开发模式（HMR + Rust 后端）
 pnpm tauri build        # 构建安装包（.dmg / .msi）
 pnpm dev                # 只启动前端
 pnpm run build          # 只构建前端（类型检查 + Vite 打包）
+cargo doc --no-deps --open   # 生成 Rust API 文档并在浏览器打开（在 src-tauri/ 下执行）
 ```
 
 ## Conventions
 
 - 模块化：每个功能是 `src/modules/<name>/` 下的独立模块
 - Rust 错误统一用 `AppError` enum，实现 `Into<InvokeError>`
+- Rust 模块用 `pub mod` 声明，保持 `cargo doc` 可见性
+- Rust 公开函数和结构体用 `///` 文档注释（支持 Markdown），内部解释用 `//`
 - 缓存路径硬编码在 Rust 端，不接受前端传入（防路径穿越）
 - 主题通过 CSS class 切换 + CSS 变量
 - Tailwind v4 零配置，不要创建 tailwind.config

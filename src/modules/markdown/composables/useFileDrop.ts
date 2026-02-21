@@ -12,14 +12,8 @@ export function useFileDrop(onDrop: (paths: string[]) => void) {
       } else if (event.payload.type === "drop") {
         isDragging.value = false;
         const paths = event.payload.paths ?? [];
-        const mdFiles = paths.filter(
-          (p: string) =>
-            p.endsWith(".md") ||
-            p.endsWith(".markdown") ||
-            p.endsWith(".mdx"),
-        );
-        if (mdFiles.length > 0) {
-          onDrop(mdFiles);
+        if (paths.length > 0) {
+          onDrop(paths);
         }
       } else {
         isDragging.value = false;
